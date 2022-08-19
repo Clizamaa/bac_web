@@ -52,7 +52,7 @@
           <li><a href="#about">Conócenos</a></li>
           <li><a href="#services">Servicios</a></li>
           <li><a href="#galery">Galeria</a></li>
-          <!-- <li><a href="#contact">Contacto</a></li> -->
+          <li><a href="#contact">Contacto</a></li>
         </ul>
       </nav> <!-- .navbar -->
 
@@ -357,11 +357,7 @@
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <!-- <div class="loading">Cargando</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Su solicitud ha sido enviada con éxito. ¡Gracias!</div> -->
-
-                  <button type="submit">Enviar</button>
+                  <button type="submit" onclick="confirmar()">Enviar</button>
                 </div>
 
               </div>
@@ -405,11 +401,11 @@
           <div class="col-lg-2 col-md-3 footer-links">
             <h4>Enlaces de Interes</h4>
             <ul>
-              <li><a href="#">Portada</a></li>
-              <li><a href="#">Conócenos</a></li>
-              <li><a href="#">Servicios</a></li>
-              <li><a href="#">Galeria</a></li>
-              <!-- <li><a href="#">Contacto</a></li> -->
+              <li><a href="index.html" class="active">Portada</a></li>
+              <li><a href="#about">Conócenos</a></li>
+              <li><a href="#services">Servicios</a></li>
+              <li><a href="#galery">Galeria</a></li>
+              <li><a href="#contact">Contacto</a></li>
             </ul>
           </div><!-- End footer links column-->
         </div>
@@ -433,6 +429,16 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    function confirmar() {
+      Swal.fire({
+      title: 'Su solicitud ha sido enviada con éxito. ¡Gracias!',
+      icon: 'success'
+      })
+    }
+  </script>
 
 </body>
 

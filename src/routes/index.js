@@ -3,7 +3,6 @@ const nodemailer = require ('nodemailer')
 const router = Router();
 
 router.post('/send-email', async (req, res) =>{
-    // console.log(req.body)
     //destructuración de objetos
     const{name, email, phone, message} = req.body; 
 
@@ -18,7 +17,7 @@ router.post('/send-email', async (req, res) =>{
            <p> Mensaje: ${message}</p>
 
         `;
-
+    //configuración del transporter
        const transporter = nodemailer.createTransport({
         host: "mail.bacchile.cl",
         port: 587,
@@ -32,19 +31,22 @@ router.post('/send-email', async (req, res) =>{
         }
        });
 
+         //configuración del mensaje
       const info= await transporter.sendMail({
             from: '"Contacto WEB Bac Chile" <contacto@bacchile.cl> ',
             to: 'cfla86@gmail.com',
             subject: 'Nuevo mensaje',
             html: contentHTML
-      });
+       });
 
-      console.log('Message sent', info.messageId);
-       
-
-    res.send('recibido')
-
-
+         console.log('Message sent: %s', info.messageId);
+      
+       //limpiar campos del formulario
+         req.body = {};
+       //esperar 10 segundos para redireccionar
+       setTimeout(() => {
+             res.redirect('/');
+         }, 3000);
 });
 
 module.exports = router;
